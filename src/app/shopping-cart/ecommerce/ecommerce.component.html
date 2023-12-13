@@ -1,0 +1,31 @@
+<div class="w-full flex bg-white dark:bg-gray-700 p-4 justify-between items-center sticky top-0 z-10 shadow-md">
+    <h5 class="font-bold text-4xl text-red-500 mr-auto">Forja </h5>
+
+    <div class="flex items-center space-x-4 ml-auto">
+        <a routerLink="../books"
+            class="text-lg text-black-500 hover:text-red-700 hover:border-b-2 border-red-700 transition">Movies</a>
+        <a routerLink="../spec"
+            class="text-lg text-black-500 hover:text-yellow-700 hover:border-b-2 border-yellow-700 transition">Categories</a>
+        <a class="btn btn-light text-dark me-2" routerLink="/ecommerce">
+            E-commerce Space
+        </a>
+
+        <button type="button" routerLink="../"
+            class="flex items-center rounded-full bg-gradient-to-r from-red-500 to-black px-4 py-2 border-2 border-white shadow-md transition duration-300 hover:shadow-xl mr-4 text-white">
+            Log Out
+            <i class="bi bi-box-arrow-right ml-2"></i> <!-- Assuming the icon for logout is 'box-arrow-right' -->
+        </button>
+
+
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <app-cards #movieC [hidden]="orderFinished" (movieAdded)="addMovieToCart($event)"></app-cards>
+    </div>
+    <div class="col-md-3">
+        <app-panier (onOrderFinished)=finishOrder($event) #shoppingCartC [hidden]="orderFinished"
+            [movieAdded]="movieAdded"></app-panier>
+    </div>
+</div>
